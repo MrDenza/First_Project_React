@@ -1,3 +1,96 @@
 body {
     justify-content: space-between;
 }
+
+.delay-m__type-1 {
+    animation: inAnimation1 700ms ease-in;
+}
+@keyframes inAnimation1 {
+    0% {
+        scale: 0;
+        opacity: 0;
+        transform: translateX(-300px);
+    }
+    100% {
+        scale: 1;
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+.delay-unm__type-1 {
+    animation: outAnimation1 1100ms ease-out;
+}
+@keyframes outAnimation1 {
+    0% {
+        scale: 1;
+        opacity: 1;
+        transform: translateX(0);
+    }
+    100% {
+        scale: 0;
+        opacity: 0;
+        transform: translateX(300px);
+    }
+}
+
+.delay-m__type-2 {
+    animation: inAnimation2 700ms ease-in;
+}
+@keyframes inAnimation2 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.delay-unm__type-2 {
+    animation: outAnimation2 1100ms ease-out;
+}
+@keyframes outAnimation2 {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.delay-m__type-3 {
+    animation: inAnimation3 2000ms ease-in;
+}
+@keyframes inAnimation3 {
+    0% {
+        transform: translateY(-150%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-height: 560px) {
+    .radix-themes {
+        --font-size-4: calc(14px * var(--scaling)) !important;
+        --font-size-5: calc(16px * var(--scaling)) !important;
+        --space-8: calc(28px * var(--scaling)) !important;
+        --space-3: calc(6px * var(--scaling)) !important;
+        /* --font-size-6: calc(20px * var(--scaling)) !important; */
+        /* --space-5: calc(24px* var(--scaling)); ппадинги ЛП кнопок */
+    }
+}
+
+.logo-for-page__box {
+    border: 1px solid green;
+}
+.list-menu__box {
+    border: 1px solid blue;
+}
+.body-list__box {
+    border: 1px solid yellow;
+}
+.header-panel__box {
+    border: 1px solid red;
+}
+.music-player__box {
+    border: 1px solid red;
+}

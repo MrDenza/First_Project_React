@@ -1,0 +1,5 @@
+.music-player__box {
+    grid-area: MusicPlayer;
+    box-sizing: border-box;
+    border-top: 1px solid var(--gray-6);
+}

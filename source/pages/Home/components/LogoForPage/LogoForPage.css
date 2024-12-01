@@ -1,0 +1,29 @@
+.logo-for-page__box {
+    grid-area: LogoForPage;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
+}
+.logo-for-page__img {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 0 0;
+}
+
+@media screen and (max-height: 560px) {
+    .logo-for-page__box {
+        padding: 10px;
+    }
+    .logo-for-page__img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (max-width: 820px) and (orientation: portrait) {
+    .logo-for-page__box {
+        padding: 5px;
+    }
+}

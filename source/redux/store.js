@@ -1,9 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import musicUserReducer from "./musicUserSlice";
+import musicListsSlice from "./reducers/musicLists/musicListsSlice";
+import musicUserSlice from "./reducers/musicUser/musicUserSlice";
+import userDataSlice from "./reducers/userData/userDataSlice";
 
 export const store = configureStore({
     reducer: {
-        musicUser: musicUserReducer,
-    }
+        musicLists: musicListsSlice,
+        musicUser: musicUserSlice,
+        userData: userDataSlice,
+    },
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({ serializableCheck: false }),
 });
