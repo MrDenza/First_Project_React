@@ -1,0 +1,9 @@
+.page-auth__logo {
+    width: 100%;
+    max-width: 100%;
+}
+.page-auth__logo svg {
+    width: 80%;
+    height: auto;
+    max-width: 80%;
+}

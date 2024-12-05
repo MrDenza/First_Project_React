@@ -1,71 +1,40 @@
-// import React from "react";
-import { useEffect, useState, useRef, useCallback } from 'react';
+//import React from "react";
+import { useEffect, useState, useCallback, Fragment } from "react";
 import { eventFlow } from "../modules/events/eventEmitter.js";
-// import { Grid } from "@radix-ui/themes";
-import { useNavigate } from 'react-router-dom';
-import DelayMount from "../components/DelayMount.jsx"
-import PageHome from '../pages/Home/PageHome.jsx';
-import {
-    PAGE_URI_SIGNIN,
-    // PAGE_URI_SIGNUP,
-    // PAGE_HOME,
-} from "../routes/PagesRouter.jsx";
 
+import { useNavigate } from "react-router-dom";
+import DelayMount from "../components/DelayMount.jsx";
+import PageHome from "../pages/Home/PageHome.jsx";
 
 const HomeLayout = () => {
     const navigate = useNavigate();
-    // const [isVisibleLogo, setIsVisibleLogo] = useState(true);
     const [isVisibleElem, setIsVisibleElem] = useState(true);
-    const timerRef = useRef(null);
 
-    const updatePageUri = useCallback(
-        (newUri) => {
-            clearTimeout(timerRef.current);
-            timerRef.current = setTimeout(() => {
-                navigate(newUri);
-            }, 1000);
+    const handleSetNavigate = useCallback(
+        (path) => {
+            navigate(path);
         },
         [navigate]
     );
-    
-    const handleGoPageSignIn = useCallback(() => {
-        setIsVisibleElem(false);
-        updatePageUri(PAGE_URI_SIGNIN);
-    }, [updatePageUri]);
-    
+
+    const handleSetVisible = useCallback(
+        (isVis) => {
+            setIsVisibleElem(isVis);
+        },
+        [setIsVisibleElem]
+    );
+
     useEffect(() => {
-        eventFlow.on("goPageSignIn", handleGoPageSignIn);
-        // eventFlow.on("goPageSignUp", handleGoPageSignUp);
-        // eventFlow.on("goPageHome", handleGoPageHome);
+        eventFlow.on("setNavigate", handleSetNavigate);
+        eventFlow.on("setVisible", handleSetVisible);
         return () => {
-            clearTimeout(timerRef.current);
-            eventFlow.removeListener("goPageSignIn", handleGoPageSignIn);
-            // eventFlow.removeListener("goPageSignUp", handleGoPageSignUp);
-            // eventFlow.removeListener("goPageHome", handleGoPageHome);
+            eventFlow.removeListener("setNavigate", handleSetNavigate);
+            eventFlow.removeListener("setVisible", handleSetVisible);
         };
-    }, [handleGoPageSignIn]);
-    
-    // const handleGoPageSignUp = () => {
-    //     setIsVisibleElem(false);
-    //     updatePageUri(PAGE_URI_SIGNUP);
-    // };
-
-    // const handleGoPageHome = () => {
-    //     setIsVisibleElem(false);
-    //     setIsVisibleLogo(false);
-    //     updatePageUri(PAGE_HOME);
-    // };
-
-    useEffect(() => {
-        if (isVisibleElem) return; // Если элемент видим, ничего не делаем
-        const timer = setTimeout(() => {
-            setIsVisibleElem(true); // Устанавливаем обратно видимость элемента после завершения анимации
-        }, 1000); // Должно совпадать с длительностью анимации
-
-        return () => clearTimeout(timer); // Очистка таймера
-    }, [isVisibleElem]); // Зависимость от isVisibleElem
+    }, [handleSetNavigate, handleSetVisible]);
 
     return (
+        <Fragment>
             <DelayMount
                 component={PageHome}
                 visible={isVisibleElem}
@@ -73,7 +42,7 @@ const HomeLayout = () => {
                 mountClass="delay-m__type-2"
                 unmountClass="delay-unm__type-2"
             ></DelayMount>
-
+        </Fragment>
     );
 };
 

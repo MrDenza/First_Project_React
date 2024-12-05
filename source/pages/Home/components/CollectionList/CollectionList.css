@@ -1,0 +1,32 @@
+.collect-list__box {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 0 10px 10px 10px;
+}
+
+.collect-list__box-list {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap: 20px;
+}
+.collect-list__box-elem {
+    width: 240px;
+    transition: transform 0.3s ease;
+}
+.collect-list__box-elem:hover {
+    transform: scale(1.05);
+}
+.collect-list__img-box {
+    height: 140px;
+}
+.collect-list__img-pos {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 140px;
+    background-color: var(--gray-5);
+}

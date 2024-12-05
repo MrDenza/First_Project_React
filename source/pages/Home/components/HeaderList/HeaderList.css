@@ -1,0 +1,27 @@
+.header__box-title {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.header__box-img {
+    flex: 0 0 200px;
+    height: 200px;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-radius: var(--radius-4);
+}
+
+.header__img-alb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header__title-alb {
+    flex: 1;
+}

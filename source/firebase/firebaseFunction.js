@@ -1,21 +1,20 @@
-import { FB_DB, /*FB_AUTH*/ } from "./firebase";
-import { ref, set, onValue, child, get,  update, /*push, runTransaction, increment*/} from "firebase/database";
-
+import { FB_DB /*FB_AUTH*/ } from "./firebase";
+import { ref, set, onValue, child, get, update /*push, runTransaction, increment*/ } from "firebase/database";
 
 export function decoderErrors(error) {
     let decodedErr = error;
     switch (error) {
-        case "auth/email-already-in-use": 
+        case "auth/email-already-in-use":
             decodedErr = "Эл. почта уже используется!";
             break;
-        case "auth/user-not-found": 
-            decodedErr = "Такой пользователь не найден!"
+        case "auth/user-not-found":
+            decodedErr = "Такой пользователь не найден!";
             break;
-        case "auth/user/disabled": 
-            decodedErr = "Пользователь заблокирован!"
+        case "auth/user/disabled":
+            decodedErr = "Пользователь заблокирован!";
             break;
         case "auth/invalid-credential":
-            decodedErr = "Неверный email или пароль!"
+            decodedErr = "Неверный email или пароль!";
             break;
         default:
             break;
@@ -24,7 +23,6 @@ export function decoderErrors(error) {
 }
 
 // ! Работа с AUTH
-
 
 // ! Работа с DATABASE
 // export const getData = async (link) => {
@@ -74,7 +72,7 @@ export const getSelectData = async (link) => {
             let data = snapshot.val();
             console.log(data);
             return data;
-        });  
+        });
     } catch (error) {
         console.log(error.message);
         return null;
@@ -85,7 +83,7 @@ export const getSelectData = async (link) => {
 export const setData = async (link, newElem) => {
     try {
         const dbRef = ref(FB_DB, link);
-        await set(dbRef, newElem).then( () => {
+        await set(dbRef, newElem).then(() => {
             // данные записаны
             return true;
         });
@@ -97,12 +95,12 @@ export const setData = async (link, newElem) => {
 };
 
 export const removeData = async (link) => {
-    //firebase.database().ref('clients').remove() 
+    //firebase.database().ref('clients').remove()
     try {
         const dbRef = ref(FB_DB);
         const updates = {};
         updates[link] = null;
-        await update(dbRef, updates).then( () => {
+        await update(dbRef, updates).then(() => {
             // данные удалены
             return true;
         });
@@ -118,7 +116,7 @@ export const updateData = async (link, updateElem) => {
         const dbRef = ref(FB_DB);
         const updates = {};
         updates[link] = updateElem;
-        await update(dbRef, updates).then( () => {
+        await update(dbRef, updates).then(() => {
             // данные обновлены
             return true;
         });
@@ -127,24 +125,7 @@ export const updateData = async (link, updateElem) => {
         return null;
         //throw error
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};
 
 /*
 import {collection, getDocs, addDoc, doc, updateDoc, deleteDoc} from "firebase/firestore";

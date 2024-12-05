@@ -61,7 +61,6 @@ style.css:
 
 // export default memo(DelayMount);
 
-
 // import React from "react";
 import { useEffect, useState } from "react";
 
@@ -81,4 +80,4 @@ export const useDelayUnmount = (isMounted, delayTime = 500) => {
     }, [isMounted, delayTime]);
 
     return shouldRender;
-}
+};

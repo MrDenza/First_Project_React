@@ -1,14 +1,17 @@
 // // import React from "react";
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback } from "react";
 import { eventFlow } from "../modules/events/eventEmitter.js";
-import { Grid } from "@radix-ui/themes";
-import { Outlet, useNavigate } from 'react-router-dom';
-import InfoForAuth from '../pages/Auth/InfoForAuth';
-import DelayMount from "../components/DelayMount"
+import { Outlet, useNavigate } from "react-router-dom";
+import InfoForAuth from "../pages/Auth/InfoForAuth";
+import DelayMount from "../components/DelayMount";
+import "./AuthLayout.css";
 import { PAGE_URI_SIGNUP, PAGE_URI_SIGNIN, PAGE_HOME } from "../routes/PagesRouter.jsx";
+import { useDispatch } from "react-redux";
+import { setLoadStateUD } from "../redux/reducers/userData/userDataSlice.js";
 
 const AuthLayout = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     // const outlet = useOutlet();
     // useEffect(() => {
     //     if (!outlet) {
@@ -24,10 +27,16 @@ const AuthLayout = () => {
         (newUri) => {
             clearTimeout(timerRef.current);
             timerRef.current = setTimeout(() => {
+                dispatch(
+                    setLoadStateUD({
+                        state: 0,
+                        error: null,
+                    })
+                );
                 navigate(newUri);
             }, 1000);
         },
-        [navigate]
+        [navigate, dispatch]
     );
 
     const handleGoPageSignIn = useCallback(() => {
@@ -47,14 +56,14 @@ const AuthLayout = () => {
     }, [updatePageUri]);
 
     useEffect(() => {
-        eventFlow.on('goPageSignIn', handleGoPageSignIn);
-        eventFlow.on('goPageSignUp', handleGoPageSignUp);
-        eventFlow.on('goPageHome', handleGoPageHome);
+        eventFlow.on("goPageSignIn", handleGoPageSignIn);
+        eventFlow.on("goPageSignUp", handleGoPageSignUp);
+        eventFlow.on("goPageHome", handleGoPageHome);
         return () => {
             clearTimeout(timerRef.current);
-            eventFlow.removeListener('goPageSignIn', handleGoPageSignIn);
-            eventFlow.removeListener('goPageSignUp', handleGoPageSignUp);
-            eventFlow.removeListener('goPageHome', handleGoPageHome);
+            eventFlow.removeListener("goPageSignIn", handleGoPageSignIn);
+            eventFlow.removeListener("goPageSignUp", handleGoPageSignUp);
+            eventFlow.removeListener("goPageHome", handleGoPageHome);
         };
     }, [handleGoPageHome, handleGoPageSignIn, handleGoPageSignUp]);
 
@@ -67,18 +76,14 @@ const AuthLayout = () => {
     }, [isVisibleElem]);
 
     return (
-        <Grid
-            height="100vh"
-            align="center"
-            justify="center"
-            columns="repeat(auto-fill, minmax(345px, 50%))"
-        >
+        <div className="page-auth__layout">
             <DelayMount
                 component={InfoForAuth}
                 visible={isVisibleLogo}
                 delay={1000}
                 mountClass="delay-m__type-2"
                 unmountClass="delay-unm__type-2"
+                className="page-auth__logo-box"
             />
             <DelayMount
                 component={Outlet}
@@ -86,8 +91,9 @@ const AuthLayout = () => {
                 delay={1000}
                 mountClass="delay-m__type-2"
                 unmountClass="delay-unm__type-2"
+                className="page-auth__form-box"
             />
-        </Grid>
+        </div>
     );
 };
 

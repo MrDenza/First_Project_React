@@ -1,7 +1,3 @@
-body {
-    justify-content: space-between;
-}
-
 .delay-m__type-1 {
     animation: inAnimation1 700ms ease-in;
 }
@@ -68,18 +64,25 @@ body {
     }
 }
 
+/* ----------------------------------------------------------- */
+.radix-themes:where([data-panel-background="translucent"]) {
+    --backdrop-filter-panel: blur(50px) !important;
+}
+
 @media screen and (max-height: 560px) {
     .radix-themes {
+        --slate-a2: #d8f4f688 !important;
         --font-size-4: calc(14px * var(--scaling)) !important;
         --font-size-5: calc(16px * var(--scaling)) !important;
         --space-8: calc(28px * var(--scaling)) !important;
         --space-3: calc(6px * var(--scaling)) !important;
         /* --font-size-6: calc(20px * var(--scaling)) !important; */
         /* --space-5: calc(24px* var(--scaling)); ппадинги ЛП кнопок */
+        animation: blurGlobal 1000ms ease-in;
     }
 }
 
-.logo-for-page__box {
+/* .logo-for-page__box {
     border: 1px solid green;
 }
 .list-menu__box {
@@ -93,4 +96,4 @@ body {
 }
 .music-player__box {
     border: 1px solid red;
-}
+} */

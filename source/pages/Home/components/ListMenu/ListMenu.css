@@ -39,8 +39,9 @@
     gap: 4px;
 }
 
+.list-menu__box .rt-BaseButton:where(.rt-variant-outline),
 .list-menu__box .rt-BaseButton:where(.rt-variant-soft) {
-    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
     width: 234px;
     white-space: nowrap;
     overflow: hidden;
@@ -69,7 +70,9 @@
 /* .list-menu__box-scr-area .rt-BaseButton:where(.rt-variant-soft) svg {
     width: 24px;
 } */
-.list-menu__box-scr-area .rt-BaseButton:where(.rt-variant-soft) span {
+.list-menu__box .rt-BaseButton:where(.rt-variant-outline) span,
+.list-menu__box .rt-BaseButton:where(.rt-variant-soft) span {
+    text-align: left;
     flex: 1 1;
     max-width: 155px;
     overflow: hidden;
@@ -119,6 +122,7 @@
         flex-direction: row;
         justify-content: center;
     }
+    .list-menu__box .rt-BaseButton:where(.rt-variant-outline),
     .list-menu__box .rt-BaseButton:where(.rt-variant-soft) {
         /* background-color: rgba(0, 0, 0, 0); */
         min-width: 210px;
