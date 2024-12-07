@@ -44,7 +44,7 @@ export const userDataSlice = createSlice({
                 state.dataLoadState = 0;
                 state.dataLoadError = null;
                 state.user = { ...DEFAULT_USER };
-                state.userSettings = { ...DEFAULT_SETTINGS };
+                //state.userSettings = { ...DEFAULT_SETTINGS };
                 state.userIsAuth = false;
             }
         },

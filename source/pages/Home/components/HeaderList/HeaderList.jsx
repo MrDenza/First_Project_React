@@ -1,5 +1,4 @@
 //import React from 'react'
-
 import { memo } from "react";
 import { Heading, Card, Skeleton } from "@radix-ui/themes";
 import "./HeaderList.css";

@@ -7,3 +7,15 @@
     height: auto;
     max-width: 80%;
 }
+@media screen and (max-width: 720px) and (orientation: portrait) {
+    .page-auth__logo {
+        display: flex;
+        justify-content: space-between;
+    }
+    .page-auth__logo svg {
+        width: 60px;
+        height: auto;
+        max-width: 60px;
+        padding-right: 10px;
+    }
+}

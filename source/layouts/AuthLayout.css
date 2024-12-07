@@ -18,3 +18,19 @@
     flex: 0 0 40%;
     padding: 20px;
 }
+
+@media screen and (max-width: 720px) and (orientation: portrait) {
+    .page-auth__layout {
+        justify-content: center;
+        align-items: start;
+        height: auto;
+        gap: 50px;
+        padding-top: 30px;
+    }
+    .page-auth__logo-box {
+        padding: 20px 10px;
+    }
+    .page-auth__form-box {
+        padding: 0;
+    }
+}

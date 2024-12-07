@@ -29,8 +29,14 @@
     height: 45px;
     padding: 5px !important;
 }
-.track-list__table-row:hover {
+.track-list__table-row {
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
+}
+.track-list__box-table tbody .track-list__table-row:hover {
     background-color: var(--accent-6);
+    color: white;
 }
 .track-list__table-row > td {
     padding: 5px !important;
@@ -59,14 +65,14 @@
 .track-list__table-c3 {
     table-layout: auto;
 }
-.track-list__table-c3,
-.table-c3__title,
-.table-c3__artist {
+.track-list__table-c3 {
     min-width: 10%;
     width: 50%;
 }
 .table-c3__title,
 .table-c3__artist {
+    min-width: 50%;
+    width: auto;
     margin: 0;
 }
 .table-c3__title {
@@ -144,6 +150,7 @@
         transform: scale(1);
     }
 }
+
 .delay-unm__type-4 {
     animation: outAnimation4 700ms ease-out;
 }
@@ -153,5 +160,58 @@
     }
     100% {
         transform: translateX(+100%);
+    }
+}
+
+@media screen and (max-width: 1200px) and (orientation: landscape) {
+    .track-list__table-c3 {
+        min-width: 10%;
+        width: 30%;
+    }
+    .table-c3__title,
+    .table-c3__artist {
+        min-width: 50%;
+        width: auto;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 930px) and (orientation: landscape), screen and (max-width: 640px) and (orientation: portrait) {
+    .track-list__table-c4,
+    .cell_text-album {
+        display: none;
+    }
+    .track-list__table-c3 {
+        min-width: 10%;
+        width: 40%;
+    }
+    .table-c3__title,
+    .table-c3__artist {
+        min-width: 50%;
+        width: auto;
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 780px) and (orientation: landscape), screen and (max-width: 540px) and (orientation: portrait) {
+    .track-list__table-c5,
+    .cell_text-date {
+        display: none;
+    }
+    .track-list__table-c3 {
+        min-width: 10%;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 440px) and (orientation: portrait) {
+    .track-list__table-c3 {
+        min-width: 10%;
+        width: 100%;
+    }
+    .table-c3__title,
+    .table-c3__artist {
+        min-width: 30%;
+        width: 80%;
     }
 }

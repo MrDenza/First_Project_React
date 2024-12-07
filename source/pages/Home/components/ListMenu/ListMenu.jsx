@@ -1,11 +1,11 @@
 // import React from "react";
 import { memo } from "react";
+import { eventFlow } from "../../../../modules/events/eventEmitter";
 import { Heading, Button, ScrollArea, Spinner } from "@radix-ui/themes";
-import { iconPlay, iconSquares, iconRadio, iconAlbum } from "../../../../elements/iconPageHome";
-import "./ListMenu.css";
 
 import { PAGE_HOME_ALBUM, PAGE_HOME, PAGE_URI_RADIO } from "../../../../routes/PagesRouter";
-import { eventFlow } from "../../../../modules/events/eventEmitter";
+import { iconPlay, iconSquares, iconRadio, iconAlbum } from "../../../../elements/iconPageHome";
+import "./ListMenu.css";
 
 function ListMenu({ listAlbums, selectBtn }) {
     const openAlbum = (link) => {

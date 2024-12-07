@@ -2,23 +2,18 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import { eventFlow } from "../modules/events/eventEmitter.js";
 import { Outlet, useNavigate } from "react-router-dom";
+import { PAGE_URI_SIGNUP, PAGE_URI_SIGNIN, PAGE_HOME } from "../routes/PagesRouter.jsx";
+
+import { useDispatch } from "react-redux";
+import { setLoadStateUD } from "../redux/reducers/userData/userDataSlice.js";
+
 import InfoForAuth from "../pages/Auth/InfoForAuth";
 import DelayMount from "../components/DelayMount";
 import "./AuthLayout.css";
-import { PAGE_URI_SIGNUP, PAGE_URI_SIGNIN, PAGE_HOME } from "../routes/PagesRouter.jsx";
-import { useDispatch } from "react-redux";
-import { setLoadStateUD } from "../redux/reducers/userData/userDataSlice.js";
 
 const AuthLayout = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    // const outlet = useOutlet();
-    // useEffect(() => {
-    //     if (!outlet) {
-    //         navigate(PAGE_URI_SIGNIN);
-    //     }
-    // }, [outlet, navigate]);
-
     const [isVisibleLogo, setIsVisibleLogo] = useState(true);
     const [isVisibleElem, setIsVisibleElem] = useState(true);
     const timerRef = useRef(null);

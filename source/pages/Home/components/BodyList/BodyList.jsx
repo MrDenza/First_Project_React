@@ -1,19 +1,21 @@
 // import React from "react";
 import { memo, useCallback, useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { eventFlow } from "../../../../modules/events/eventEmitter";
-import { useLocation, useParams } from "react-router-dom";
 import { ScrollArea } from "@radix-ui/themes";
+
+import { useLocation, useParams } from "react-router-dom";
+import { PAGE_HOME, PAGE_URI_RADIO } from "../../../../routes/PagesRouter";
+
+import { useDispatch, useSelector } from "react-redux";
 import { addNewTrack, delTrackMU } from "../../../../redux/reducers/musicUser/musicUserSlice";
+import { setCurrentTrack } from "../../../../redux/reducers/appCache/appCacheSlice";
+
 import { updateData } from "../../../../firebase/firebaseFunction";
 import { FB_DB_MUSIC_USERS } from "../../../../firebase/firebase";
-import { PAGE_HOME, PAGE_URI_RADIO } from "../../../../routes/PagesRouter";
 
 import CollectionList from "../CollectionList/CollectionList";
 import TrackList from "../TrackList/TrackList";
-
 import "./BodyList.css";
-import { setCurrentTrack } from "../../../../redux/reducers/appCache/appCacheSlice";
 
 function BodyList() {
     const location = useLocation();
@@ -24,6 +26,7 @@ function BodyList() {
     const musicUser = useSelector((state) => state.musicUser);
     const userUid = useSelector((state) => state.userData.user.uid);
     const musicLists = useSelector((state) => state.musicLists);
+    const idPlayTrack = useSelector((state) => state.appCache.idPlayTrack);
     const [prevListIdTrack, setPrevListIdTrack] = useState(musicUser.listIdTrack);
 
     const handleAddTrack = useCallback(
@@ -44,7 +47,6 @@ function BodyList() {
 
     const handlePlayTrack = useCallback(
         (track) => {
-            console.log(track);
             dispatch(setCurrentTrack(track));
         },
         [dispatch]
@@ -102,6 +104,7 @@ function BodyList() {
                         likeTrackList={musicUser.listIdTrack}
                         modeview={params.modeview}
                         pageView={params.page}
+                        idPlayTrack={idPlayTrack}
                     />
                 )}
             </ScrollArea>

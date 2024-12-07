@@ -12,5 +12,25 @@
     width: 70px !important;
     height: 70px !important;
 }
-/* .header-panel__text-user {
-} */
+.header-panel__text-user {
+    text-align: center;
+}
+
+@media screen and (max-height: 560px) {
+    .header-panel__user-img {
+        margin: 5px 15px;
+        width: 40px !important;
+        height: 40px !important;
+    }
+}
+
+@media screen and (max-width: 820px) and (orientation: portrait) {
+    .header-panel__user-img {
+        margin: 15px;
+        width: 50px !important;
+        height: 50px !important;
+    }
+    .header-panel__text-user {
+        display: none;
+    }
+}

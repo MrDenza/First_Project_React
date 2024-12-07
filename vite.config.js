@@ -3,12 +3,12 @@ import react from '@vitejs/plugin-react-swc'
 import { resolve } from 'path'
 
 // Полная перезагрузка страницы вместо горячей
-const fullReloadAlways = { 
+/*const fullReloadAlways = { 
   handleHotUpdate({ server }) {
     server.ws.send({ type: "full-reload" });
     return [];
   },
-};
+};*/
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,8 +17,11 @@ export default defineConfig({
     //     '@': resolve(__dirname, 'source'), // Устанавливаем '@' как псевдоним для папки 'src'
     //   },
     // },
-    plugins: [react(), fullReloadAlways],
+    plugins: [react() /*, fullReloadAlways*/],
     base: "/",
+    resolve: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+    },
     server: {
         port: 3000,
     },

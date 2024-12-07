@@ -8,6 +8,15 @@ import "./main.css";
 import App from "./App.jsx";
 //import reportWebVitals from './reportWebVitals';
 
+(function init100vh() {
+    function setHeight() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty("--vh", `${vh}px`);
+    }
+    setHeight();
+    window.addEventListener("resize", setHeight);
+})();
+
 createRoot(document.getElementById("root")).render(
     //<StrictMode>
     <BrowserRouter>

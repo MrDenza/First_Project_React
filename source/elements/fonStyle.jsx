@@ -32,21 +32,6 @@ export const fonStyle = (
             />
         </g>
         <defs>
-            {/*
-      <filter
-        id={`filter0_f_37_453-${id}`}
-        x="213.223"
-        y="-839.851"
-        width="5601.16"
-        height="4153.55"
-        filterUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
-      >
-        <feFlood floodOpacity="0" result="BackgroundImageFix" />
-        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
-        <feGaussianBlur stdDeviation="82" result="effect1_foregroundBlur_37_453" />
-      </filter>
-      */}
             <radialGradient
                 id={`paint0_radial_37_453`}
                 cx="0"

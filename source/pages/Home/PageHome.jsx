@@ -1,12 +1,12 @@
 // import React from "react";
 import { memo, useEffect } from "react";
-
+import { useLocation, useParams } from "react-router-dom";
 import { Card } from "@radix-ui/themes";
-import { useDispatch, useSelector } from "react-redux";
 
 import { decoderErrors, getData } from "../../firebase/firebaseFunction.js";
 import { FB_DB_MUSIC_LISTS, FB_DB_MUSIC_USERS, FB_DB_USERS_DATA } from "../../firebase/firebase.js";
 
+import { useDispatch, useSelector } from "react-redux";
 import { setLoadStateML, setResultLoadML } from "../../redux/reducers/musicLists/musicListsSlice.js";
 import { setLoadStateMU, setResultLoadMU } from "../../redux/reducers/musicUser/musicUserSlice.js";
 import { setLoadStateUD, setUserSettings } from "../../redux/reducers/userData/userDataSlice.js";
@@ -18,7 +18,6 @@ import BodyList from "./components/BodyList/BodyList.jsx";
 import MusicPlayer from "./components/MusicPlayer/MusicPlayer.jsx";
 
 import "./PageHome.css";
-import { useLocation, useParams } from "react-router-dom";
 
 function PageHome() {
     const dispatch = useDispatch();

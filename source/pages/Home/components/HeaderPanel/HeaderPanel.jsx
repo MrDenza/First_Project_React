@@ -1,15 +1,19 @@
 // import React from "react";
 import { memo } from "react";
-import "./HeaderPanel.css";
+import { eventFlow } from "../../../../modules/events/eventEmitter";
 import { DropdownMenu, Avatar, Text, AlertDialog, Button, Flex } from "@radix-ui/themes";
 import { PAGE_HOME_ALBUM } from "../../../../routes/PagesRouter";
-import { eventFlow } from "../../../../modules/events/eventEmitter";
-import { useDispatch, useSelector } from "react-redux";
-import { resetStateUD, setAppearance, setColorTheme } from "../../../../redux/reducers/userData/userDataSlice";
+
 import { updateData } from "../../../../firebase/firebaseFunction";
 import { FB_DB_USERS_DATA } from "../../../../firebase/firebase";
+
+import { useDispatch, useSelector } from "react-redux";
+import { resetStateUD, setAppearance, setColorTheme } from "../../../../redux/reducers/userData/userDataSlice";
 import { resetStateML } from "../../../../redux/reducers/musicLists/musicListsSlice";
 import { resetStateMU } from "../../../../redux/reducers/musicUser/musicUserSlice";
+import { resetCache } from "../../../../redux/reducers/appCache/appCacheSlice";
+
+import "./HeaderPanel.css";
 
 const LIST_APPEARANCE = [
     { idT: 0, name: "Светлая", value: "light" },
@@ -26,6 +30,7 @@ const LIST_COLOR_THEME = [
     { idC: 7, name: "Зеленый", value: "green" },
     { idC: 8, name: "Лайм", value: "lime" },
     { idC: 9, name: "Голубой", value: "sky" },
+    { idC: 10, name: "Серый", value: "gray" },
 ];
 
 function HeaderPanel({ userName }) {
@@ -53,6 +58,7 @@ function HeaderPanel({ userName }) {
             dispatch(resetStateML(key));
             dispatch(resetStateMU(key));
             dispatch(resetStateUD(key));
+            dispatch(resetCache(key));
         }, 1000);
     };
 
@@ -86,6 +92,7 @@ function HeaderPanel({ userName }) {
                             className="header-panel__user-img"
                         />
                     </DropdownMenu.Trigger>
+
                     <DropdownMenu.Content>
                         <DropdownMenu.Item disabled>Профиль</DropdownMenu.Item>
                         <DropdownMenu.Item onClick={() => setNavigate(PAGE_HOME_ALBUM + "/my")}>Мой плейлист</DropdownMenu.Item>
@@ -102,14 +109,15 @@ function HeaderPanel({ userName }) {
                         </DropdownMenu.Sub>
 
                         <DropdownMenu.Separator />
+
                         <AlertDialog.Trigger>
                             <DropdownMenu.Item color="red">Выход</DropdownMenu.Item>
                         </AlertDialog.Trigger>
                     </DropdownMenu.Content>
+
                     <AlertDialog.Content maxWidth="450px">
                         <AlertDialog.Title>Выход</AlertDialog.Title>
                         <AlertDialog.Description size="2">Вы уверены что хотите выйти?</AlertDialog.Description>
-
                         <Flex gap="3" mt="4" justify="end">
                             <AlertDialog.Cancel>
                                 <Button variant="soft" color="gray">

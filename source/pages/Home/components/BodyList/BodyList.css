@@ -17,26 +17,3 @@
         height: calc(100vh - 295px);
     }
 }
-
-.item {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    border: 1px solid #ccc;
-    margin: 5px 0;
-}
-
-.fade-enter {
-    opacity: 0;
-}
-.fade-enter-active {
-    opacity: 1;
-    transition: opacity 3000ms ease-in;
-}
-.fade-exit {
-    opacity: 1;
-}
-.fade-exit-active {
-    opacity: 0;
-    transition: opacity 3000ms ease-out;
-}

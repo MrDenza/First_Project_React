@@ -38,7 +38,6 @@
     flex-direction: column;
     gap: 4px;
 }
-
 .list-menu__box .rt-BaseButton:where(.rt-variant-outline),
 .list-menu__box .rt-BaseButton:where(.rt-variant-soft) {
     box-shadow: none;
@@ -67,9 +66,6 @@
         background-color: var(--gray-a3);
     }
 }
-/* .list-menu__box-scr-area .rt-BaseButton:where(.rt-variant-soft) svg {
-    width: 24px;
-} */
 .list-menu__box .rt-BaseButton:where(.rt-variant-outline) span,
 .list-menu__box .rt-BaseButton:where(.rt-variant-soft) span {
     text-align: left;
@@ -80,52 +76,99 @@
     text-overflow: ellipsis;
 }
 
-@media screen and (max-width: 820px) and (orientation: portrait) {
-    .list-menu__nav-title {
-        display: none;
-    }
-    .list-menu__box {
-        grid-area: ListMenu;
-        padding: 8px 10px 8px 10px;
-        /* justify-content: flex-start;
-        align-items: stretch; */
-        gap: 5px;
-    }
-    .list-menu__box-nav {
-        flex: 0 0;
-        padding-right: 0;
-    }
-    .list-menu__nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: center;
-        gap: 4px;
-    }
-    /* .list-menu__nav span {
-        display: none;
-    } */
-    .list-menu__box-albums {
-        border-top: 1px solid var(--gray-6);
-        padding-top: 5px;
-        flex-direction: column;
-    }
-    .list-menu__box-albums-title {
-        text-align: center;
-    }
-    .list-menu__box-scr-area {
-        height: auto;
-    }
-    .list-menu__scr-list {
-        padding: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-    }
+@media screen and (max-height: 560px) {
     .list-menu__box .rt-BaseButton:where(.rt-variant-outline),
     .list-menu__box .rt-BaseButton:where(.rt-variant-soft) {
-        /* background-color: rgba(0, 0, 0, 0); */
-        min-width: 210px;
+        box-shadow: none;
+        width: 180px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        justify-content: start;
+        &:where(:focus-visible) {
+            outline: 2px solid var(--accent-8);
+            outline-offset: -1px;
+        }
+        @media (hover: hover) {
+            &:where(:hover) {
+                background-color: var(--accent-a4);
+            }
+        }
+        &:where([data-state="open"]) {
+            background-color: var(--accent-a4);
+        }
+        &:where(:active:not([data-state="open"])) {
+            background-color: var(--accent-a5);
+        }
+        &:where([data-disabled]) {
+            color: var(--gray-a8);
+            background-color: var(--gray-a3);
+        }
+    }
+}
+
+@media screen and (max-width: 740px) and (orientation: portrait) {
+    .list-menu__box .rt-BaseButton:where(.rt-variant-outline),
+    .list-menu__box .rt-BaseButton:where(.rt-variant-soft) {
+        box-shadow: none;
+        width: 160px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        justify-content: start;
+        &:where(:focus-visible) {
+            outline: 2px solid var(--accent-8);
+            outline-offset: -1px;
+        }
+        @media (hover: hover) {
+            &:where(:hover) {
+                background-color: var(--accent-a4);
+            }
+        }
+        &:where([data-state="open"]) {
+            background-color: var(--accent-a4);
+        }
+        &:where(:active:not([data-state="open"])) {
+            background-color: var(--accent-a5);
+        }
+        &:where([data-disabled]) {
+            color: var(--gray-a8);
+            background-color: var(--gray-a3);
+        }
+    }
+}
+
+@media screen and (max-width: 660px) and (orientation: portrait) {
+    .list-menu__nav > button > span {
+        display: none;
+    }
+    .list-menu__nav .rt-BaseButton:where(.rt-variant-outline),
+    .list-menu__nav .rt-BaseButton:where(.rt-variant-soft) {
+        box-shadow: none;
+        width: 80px;
+        min-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         justify-content: center;
+        &:where(:focus-visible) {
+            outline: 2px solid var(--accent-8);
+            outline-offset: -1px;
+        }
+        @media (hover: hover) {
+            &:where(:hover) {
+                background-color: var(--accent-a4);
+            }
+        }
+        &:where([data-state="open"]) {
+            background-color: var(--accent-a4);
+        }
+        &:where(:active:not([data-state="open"])) {
+            background-color: var(--accent-a5);
+        }
+        &:where([data-disabled]) {
+            color: var(--gray-a8);
+            background-color: var(--gray-a3);
+        }
     }
 }

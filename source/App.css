@@ -1,34 +1,3 @@
-.delay-m__type-1 {
-    animation: inAnimation1 700ms ease-in;
-}
-@keyframes inAnimation1 {
-    0% {
-        scale: 0;
-        opacity: 0;
-        transform: translateX(-300px);
-    }
-    100% {
-        scale: 1;
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-.delay-unm__type-1 {
-    animation: outAnimation1 1100ms ease-out;
-}
-@keyframes outAnimation1 {
-    0% {
-        scale: 1;
-        opacity: 1;
-        transform: translateX(0);
-    }
-    100% {
-        scale: 0;
-        opacity: 0;
-        transform: translateX(300px);
-    }
-}
-
 .delay-m__type-2 {
     animation: inAnimation2 700ms ease-in;
 }
@@ -71,9 +40,9 @@
 
 @media screen and (max-height: 560px) {
     .radix-themes {
-        --slate-a2: #d8f4f688 !important;
         --font-size-4: calc(14px * var(--scaling)) !important;
         --font-size-5: calc(16px * var(--scaling)) !important;
+        --font-size-7: calc(20px * var(--scaling)) !important;
         --space-8: calc(28px * var(--scaling)) !important;
         --space-3: calc(6px * var(--scaling)) !important;
         /* --font-size-6: calc(20px * var(--scaling)) !important; */
@@ -93,7 +62,7 @@
 }
 .header-panel__box {
     border: 1px solid red;
-}
-.music-player__box {
+} 
+.music-player__container {
     border: 1px solid red;
-} */
+}*/

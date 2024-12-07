@@ -1,10 +1,11 @@
 //import React from 'react'
-import { Card, Inset, Text, Strong, Skeleton } from "@radix-ui/themes";
 import { memo } from "react";
-import { PAGE_HOME_ALBUM } from "../../../../routes/PagesRouter";
-import "./CollectionList.css";
 import { eventFlow } from "../../../../modules/events/eventEmitter";
+import { Card, Inset, Text, Strong, Skeleton } from "@radix-ui/themes";
+import { PAGE_HOME_ALBUM } from "../../../../routes/PagesRouter";
+
 import HeaderList from "../HeaderList/HeaderList";
+import "./CollectionList.css";
 
 function CollectionList({ dataList }) {
     const openAlbum = (path) => {

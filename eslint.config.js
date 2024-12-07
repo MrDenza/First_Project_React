@@ -7,7 +7,7 @@ import jsImport from "eslint-plugin-import";
 import jsx from "eslint-plugin-jsx-a11y";
 
 export default [
-    { ignores: ["dist"] },
+    { ignores: ["dist", "source/tests/"] },
     {
         files: ["**/*.{js,jsx}"],
         languageOptions: {

@@ -27,7 +27,7 @@ const PARAMS_VIEW = [
     { name: "Все", pValue: Infinity },
 ];
 
-function TrackList({ isEdit, dataList, likeTrackList, modeview, pageView }) {
+function TrackList({ isEdit, dataList, likeTrackList, modeview, pageView, idPlayTrack }) {
     const [sortBy, setSortBy] = useState(DATE_SORT);
     const [sortOrder, setSortOrder] = useState(TYPE_SORT_DESC);
     const [animatingTracks, setAnimatingTracks] = useState(new Set());
@@ -135,14 +135,16 @@ function TrackList({ isEdit, dataList, likeTrackList, modeview, pageView }) {
                     )}
                 </div>
             </Table.Cell>
-            <Table.Cell justify="start">
+            <Table.Cell justify="start" style={idPlayTrack === elem.idTrack && { color: "var(--accent-a11)" }}>
                 <p className="table-c3__title cell_text-overflow">{elem.title}</p>
                 <p className="table-c3__artist cell_text-overflow">{elem.artist}</p>
             </Table.Cell>
-            <Table.Cell className="cell_text-overflow" justify="center">
+            <Table.Cell className="cell_text-album cell_text-overflow" justify="center">
                 {elem.titleAlbum || dataList.titleAlbum}
             </Table.Cell>
-            <Table.Cell justify="center">{formattedDate(elem.date)}</Table.Cell>
+            <Table.Cell className="cell_text-date" justify="center">
+                {formattedDate(elem.date)}
+            </Table.Cell>
             <Table.Cell justify="center">{elem.time}</Table.Cell>
             <Table.Cell justify="center">
                 <label

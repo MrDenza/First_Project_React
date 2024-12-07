@@ -160,7 +160,7 @@ function FormSignUp({ loadStatus, errSignUp }) {
                             </Callout.Text>
                         </Callout.Root>
                     )}
-                    <Flex mt="6" justify="end" gap="3">
+                    <Flex mt="6" justify="between" gap="3">
                         <Button variant="outline" style={{ width: "135px" }} type="reset" disabled={loadStatus}>
                             Авторизоваться
                         </Button>
