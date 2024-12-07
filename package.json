@@ -12,11 +12,11 @@
     "scripts": {
         "start": "vite",
         "build": "vite build",
-        "fullbuild": "npm run lint && npm run format && vite build",
+        "fullbuild": "npm run lint && npm run format && npm run test && vite build",
         "lint": "eslint --max-warnings=0 \"source/**/*.{js,jsx}\" --report-unused-disable-directives",
         "preview": "vite preview",
         "format": "prettier --write ./source",
-        "test": "vitest",
+        "test": "vitest run",
         "test2": "jest"
     },
     "dependencies": {
